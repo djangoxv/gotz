@@ -12,8 +12,8 @@ func TzConvert(tzname string) string {
 
     if err == nil {
         local := local.In(location)
-        return local.Format(time.UnixDate) + "\n"
+        return local.Format(time.UnixDate)
     }
 
-    return local.Format(time.UnixDate) + "\n"
+    return local.Format(time.UnixDate)
 }
