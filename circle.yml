@@ -12,7 +12,7 @@ dependencies:
     - docker build -t $CIRCLE_PROJECT_REPONAME .
 
   post:
-    - docker run -d -p 8080:8080 $CIRCLE_PROJECT_REPONAME 
+    - docker run -d -p 80:80 $CIRCLE_PROJECT_REPONAME 
 
 test:
   pre:
@@ -20,7 +20,7 @@ test:
 #    - chmod +x /tmp/do-package-tree_linux
 
   override:
-    - curl -X POST -d "America/New_York" http://localhost:8080/
+    - curl -X POST -d "America/New_York" http://localhost/
 
   post:
     - docker stop $(docker ps -a -q)

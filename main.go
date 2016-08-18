@@ -28,7 +28,7 @@ func Init(logfile string) {
 
 func main() {
     // process flags passed from service startup
-    port      := flag.String("port", "8080", "Port to bind gopkg to")
+    port      := flag.String("port", "80", "Port to bind gopkg to")
     logfile   := flag.String("logfile", "/tmp/gotz.log", "Log file path and name")
     flag.Parse()
 
