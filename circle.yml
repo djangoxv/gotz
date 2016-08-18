@@ -4,15 +4,15 @@ machine:
 
 dependencies:
   pre:
-    - go get github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
     - go get github.com/gorilla/mux
+    - go get github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
 
   override:
     - go build github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
     - docker build -t $CIRCLE_PROJECT_REPONAME .
 
   post:
-    - docker run -d -p 8080:8080 $CIRCLE_PROJECT_REPONAME 
+    - docker run -d -p 80:80 $CIRCLE_PROJECT_REPONAME 
 
 test:
   pre:
@@ -20,10 +20,10 @@ test:
 #    - chmod +x /tmp/do-package-tree_linux
 
   override:
-#    - /tmp/do-package-tree_linux |& tee $CIRCLE_TEST_REPORTS/gopkg_test.out
+    - curl -X POST -d "America/New_York" http://localhost/
 
   post:
-#    - docker stop $(docker ps -a -q)
+    - docker stop $(docker ps -a -q)
 #    - mv ./gopkg $CIRCLE_ARTIFACTS/
 
 #deployment:
