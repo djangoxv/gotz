@@ -9,7 +9,7 @@ dependencies:
 
   override:
     - go build github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
-    - docker build -t $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:latest 
+    - docker build -t $DOCKER_USER/$CIRCLE_PROJECT_REPONAME:latest .
 
   post:
     - docker run -d -p 80:80 $DOCKER_USER/$CIRCLE_PROJECT_REPONAME 
